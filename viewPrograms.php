@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Add Volunteer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/volunteer.css">
+    <link rel="stylesheet" href="css/viewUser.css">
+    <!-- Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!-- Bootstrap  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Javascript -->
+    <script src="js/script.js" defer></script>
+    <!-- Added defer for better loading -->
+  </head>
+  <body style="background-image: url(img/village.jpg);">
+    <!-- Navbar start -->
+    <nav class="navbar">
+      <div class="logo">Village Development System</div>
+      <div class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="adminLogin.html">Administrator</a></li>
+        <li><a href="volunteerLogin.html">Volunteer</a></li>
+        <li><a href="userLogin.html">Users</a></li>
+      </ul>
+    </nav>
+    <!-- end navbar -->
+
+      <div class="volunteer-container">
+             <!-- Main Links -->
+        <div class="volunteer-function" id="admin-heading">
+            <ul>
+                <li>Home</li>
+                <li><a href="addVolunteer.html">Add Volunteers</a></li>
+                <li><a href="viewVolunteer.php">View Volunteers</a></li>
+                <li><a href="viewUsers.php">View Users</a></li>
+                <li>Logout</li>
+            </ul>
+        </div>
+             <!-- Add volunteer Form start -->
+      <div class="addVolunteerForm">
+        <h2>View Programs</h2>
+        <!-- User database on webpage -->
+        <table class="user-table">
+            <tr>
+                <th>District</th>
+                <th>&nbsp; Village</th>
+                <th>&nbsp; Date </th>
+                <th>&nbsp; Programs </th>
+            </tr>
+            <?php
+        $conn = mysqli_connect("localhost","root","","village_development_system");
+        if($conn -> connect_error){
+            die("Connection failed:".$conn->connect_error);
+        }
+        $sql="SELECT Sr_No, district, village, date,  programs from programs";
+        $result = $conn-> query($sql);
+
+        if($result -> num_rows > 0){
+            while ($row = $result -> fetch_assoc()){
+                echo "<tr><td>".$row["district"]."</td><td>&nbsp;&nbsp;".$row["village"]."</td><td>&nbsp;&nbsp;".$row["date"]."</td><td>&nbsp;&nbsp;".$row["programs"]."</td></tr>";
+            }
+            echo "</table>";
+        }
+        else{
+            echo "0 result";
+        }
+        $conn -> close();
+        ?>
+         </table>      
+      </div>
+      </div>
+    <!-- footer start -->
+   <!-- footer start -->
+   <footer>
+    <div class="footer-main">
+      <div class="footer-box1">
+        <h2>important links<!-- <hr style="height: 5px; background:red; width: 135px;"> --></h2>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Services</a></li>
+          <li><a href="contactUs.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-box2">
+        <h2>FAQ <!-- <hr style="height: 5px; background:red; width: 40px;"> --></h2>
+        <ul>
+          <li><a href="">How to send a request?</a></li>
+          <li><a href="">How to signup in this portal?</a></li>
+          <li><a href="">Where to see my problem?</a></li>
+          <li><a href="">How to delete my account?</a></li>
+        </ul>
+      </div>
+      <div class="footer-box3">
+        <h2>Follow us <!-- <hr style="height: 5px; background:red; width: 80px;"> --></h2>
+        <ul>
+          <li><a href="">twitter</a></li>
+          <li><a href="">Instagram</a></li>
+          <li><a href="">Linked In</a></li>
+          <li><a href="">Youtube</a></li>
+        </ul>
+      </div>
+    </div>
+    <p>
+      Copyright &copy; Village Development System Pvt LTD 2024 All Rights Reserved
+  </p>
+
+  </footer>  <!-- footer end -->
+  </body>
+</html>

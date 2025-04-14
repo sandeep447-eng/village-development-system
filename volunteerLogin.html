@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Village Development System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <script src="js/script.js" defer></script> <!-- Added defer for better loading -->
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">Village Development System</div>
+    <div class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="adminLogin.html">Administrator</a></li>
+      <li><a href="volunteerLogin.html">Volunteer</a></li>
+      <li><a href="userLogin.html">Users</a></li>
+    </ul>
+  </nav>
+  <div class="main" style="background-image: url(img/village.jpg); background-size: cover;">
+    <h1>Volunteer</h1>
+    <div class="admin-form">  
+        <div class="toggle-buttons">
+            <button id="signupBtn" class="active">Sign Up</button>
+            <button id="loginBtn">Login</button>
+        </div>
+
+        <div class="form-container">
+            <div class="signup-form">
+                <form action="volunteer.php" method="post">
+                    <input type="text" name="username" placeholder="User Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+
+            <div class="login-form" style="display: none;">
+                <form action="volunteer-log.php" method="post">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
